@@ -110,8 +110,8 @@ public class MainPanelController {
     private String voiceOffIcon;
     private String backGround;
 
-    private double iconWidth = 40;
-    private double iconHeight = 40;
+    private final double iconWidth = 40;
+    private final double iconHeight = 40;
 
     @FXML
     private AnchorPane mainPane;
