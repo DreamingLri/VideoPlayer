@@ -183,45 +183,51 @@ public class MainPanelController {
         fc.setTitle("Please choose a mp4 file");
         fc.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("mp4 file","*.mp4"));
         File file = fc.showOpenDialog(null);
-        if(file != null){
+        if(!file.toString().endsWith(".mp4")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Warning");
+            alert.setHeaderText("You seems not open a mp4 file");
+            alert.show();
+        } else {
+            if(file != null){
 //            System.out.println(file.getAbsolutePath());
-            Media media = null;
-            try {
-                media = new Media(file.toURI().toURL().toString());
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
-            mp = new MediaPlayer(media);
+                Media media = null;
+                try {
+                    media = new Media(file.toURI().toURL().toString());
+                } catch (MalformedURLException e) {
+                    throw new RuntimeException(e);
+                }
+                mp = new MediaPlayer(media);
+                isPlaying = false;
+                setIcon(playBtn,playIcon);
 
-            mp.setOnReady(new Runnable() {
-                @Override
-                public void run() {
-                    Duration duration = mp.getMedia().getDuration();
-                    timeSlider.setMax(duration.toSeconds());
-                    totalTime = (int) duration.toSeconds();
-                    timeLabel.setText("00:00/" + timeFormat(totalTime));
-                    nameLabel.setText(file.getName());
+                mp.setOnReady(new Runnable() {
+                    @Override
+                    public void run() {
+                        Duration duration = mp.getMedia().getDuration();
+                        timeSlider.setMax(duration.toSeconds());
+                        totalTime = (int) duration.toSeconds();
+                        timeLabel.setText("00:00/" + timeFormat(totalTime));
+                        nameLabel.setText(file.getName());
 
-                    int height = mp.getMedia().getHeight();
-                    int width = mp.getMedia().getWidth();
+                        int height = mp.getMedia().getHeight();
+                        int width = mp.getMedia().getWidth();
 //                    System.out.println(width);
-                    mv.setFitHeight(height*0.5);
-                    mv.setFitWidth(width*0.5);
-                    stage.setWidth(width*0.5);
-
-                    voiceSlider.setValue(50.0);
-                }
-            });
-
-            mp.currentTimeProperty().addListener(new InvalidationListener() {
-                @Override
-                public void invalidated(Observable observable) {
-                    timeSlider.setValue(mp.getCurrentTime().toSeconds());
-                    timeLabel.setText(timeFormat((int) mp.getCurrentTime().toSeconds()) + "/" + timeFormat(totalTime));
-                }
-            });
-
-            mv.setMediaPlayer(mp);
+                        mv.setFitHeight(height*0.5);
+                        mv.setFitWidth(width*0.5);
+                        stage.setWidth(width*0.5);
+                        voiceSlider.setValue(50.0);
+                    }
+                });
+                mp.currentTimeProperty().addListener(new InvalidationListener() {
+                    @Override
+                    public void invalidated(Observable observable) {
+                        timeSlider.setValue(mp.getCurrentTime().toSeconds());
+                        timeLabel.setText(timeFormat((int) mp.getCurrentTime().toSeconds()) + "/" + timeFormat(totalTime));
+                    }
+                });
+                mv.setMediaPlayer(mp);
+            }
         }
     }
 
