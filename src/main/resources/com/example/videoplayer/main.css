@@ -1,0 +1,49 @@
+.bg{
+    -fx-background-color: black;
+}
+
+.menu{
+    -fx-background-color: #1E1F22;
+    -fx-font-weight: bolder;
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+}
+
+.menuBar{
+    -fx-background-color: #1E1F22;
+    -fx-font-weight: bolder;
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+}
+
+.borderpane{
+    -fx-background-color: #1E1F22;
+}
+
+.media{
+    /*-fx-background-color: black;*/
+}
+
+.button{
+    -fx-background-color: #1E1F22;
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+    -fx-font-weight: bolder;
+}
+
+.slider{
+    -fx-background-color: #1E1F22;
+}
+
+.label{
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+    -fx-font-weight: bolder;
+}
+
+.menuItem{
+    -fx-background-color: #1E1F22;
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+    -fx-font-weight: bolder;
+}
+
+.text-area{
+    -fx-background-color: #1E1F22;
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+}

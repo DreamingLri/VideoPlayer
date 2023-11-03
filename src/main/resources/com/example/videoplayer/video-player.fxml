@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.ImageView?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" styleClass="mainPame" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoplayer.Controller.MainPanelController">
+   <children>
+      <Pane fx:id="backGroundPane" layoutX="0.0" layoutY="0.0" onMouseClicked="#play" prefHeight="800.0" prefWidth="1000.0" styleClass="bg" />
+      <ImageView fx:id="imageView" fitHeight="202.0" fitWidth="232.0" layoutX="184.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView" AnchorPane.bottomAnchor="99.0" AnchorPane.leftAnchor="184.0" AnchorPane.rightAnchor="184.0" AnchorPane.topAnchor="99.0" />
+      <MenuBar fx:id="menu" layoutY="0.0" prefHeight="30.0" prefWidth="1000.0" styleClass="menuBar">
+        <menus>
+          <Menu mnemonicParsing="false" styleClass="menu" text="Option">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#selectVideo" styleClass="menuItem" text="Open new Video" />
+              <MenuItem mnemonicParsing="false" onAction="#closeVideo" styleClass="menuItem" text="Close this Video" />
+              <MenuItem mnemonicParsing="false" onAction="#Exit" styleClass="menuItem" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" styleClass="menu" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#About" styleClass="menuItem" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+
+      <MediaView fx:id="mv" styleClass="media" />
+      <BorderPane fx:id="borderPane" layoutY="674.0" prefHeight="120.0" prefWidth="1000.0" styleClass="borderpane">
+         <center>
+            <HBox fx:id="hboxCenter" prefHeight="30.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Slider fx:id="timeSlider" onMousePressed="#initTime" prefHeight="30.0" prefWidth="1000.0" styleClass="slider" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                     </padding>
+                  </Slider>
+               </children>
+            </HBox>
+         </center>
+         <bottom>
+            <HBox fx:id="hboxButtom" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="fullBtn" mnemonicParsing="false" onMouseClicked="#fullScreen" styleClass="button" text="FullScreen" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="stopBtn" alignment="CENTER_LEFT" mnemonicParsing="false" onMouseClicked="#closeVideo" styleClass="button" text="Stop" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="playBtn" mnemonicParsing="false" onAction="#play" styleClass="button" text="Play" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="voiceBtn" mnemonicParsing="false" onMouseClicked="#changeMute" styleClass="button" text="voice" />
+                        <Slider fx:id="voiceSlider" onMousePressed="#initVoice" styleClass="slider" HBox.hgrow="ALWAYS">
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Slider>
+                     </children></HBox>
+               </children>
+            </HBox>
+         </bottom>
+         <top>
+            <HBox fx:id="hboxTop" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="timeLabel" styleClass="label" text="00:00 / 00:00" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="20.0" top="15.0" />
+                     </HBox.margin></Label>
+                  <Label fx:id="nameLabel" styleClass="label" text="file_name" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="20.0" top="15.0" />
+                     </HBox.margin></Label>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
