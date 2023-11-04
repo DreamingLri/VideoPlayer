@@ -37,10 +37,6 @@ public class MainPanelController {
     public MediaView mv;
     public MediaPlayer mp;
 
-    public MediaPlayer getMediaPlayer(){
-        return mp;
-    }
-
     @FXML
     private Slider timeSlider;
 
@@ -83,8 +79,6 @@ public class MainPanelController {
     @FXML
     private Pane backGroundPane;
 
-    private int totalTime;
-
     private Scene scene;
 
     private Stage stage;
@@ -98,6 +92,9 @@ public class MainPanelController {
     @FXML
     private HBox hboxCenter;
 
+    @FXML
+    private AnchorPane mainPane;
+
 
     private boolean isFullWindow = false;
     private boolean isButtonVisible = true;
@@ -107,6 +104,9 @@ public class MainPanelController {
 
     private double currentWidth;
     private double currentHeight;
+    private final double iconWidth = 40;
+    private final double iconHeight = 40;
+    private int totalTime;
 
     private String endIcon;
     private String fullScreenIcon;
@@ -117,12 +117,6 @@ public class MainPanelController {
     private String backGround;
     private String backwardIcon;
     private String forwardIcon;
-
-    private final double iconWidth = 40;
-    private final double iconHeight = 40;
-
-    @FXML
-    private AnchorPane mainPane;
 
     public MainPanelController() {
     }
@@ -377,16 +371,12 @@ public class MainPanelController {
             mp.stop();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Waring");
+            alert.setTitle("Warning");
             alert.setHeaderText("No Video has been loaded");
             alert.show();
         }
     }
 
-    @FXML
-    private void Setting(){
-
-    }
 
     @FXML
     private void Exit(){
