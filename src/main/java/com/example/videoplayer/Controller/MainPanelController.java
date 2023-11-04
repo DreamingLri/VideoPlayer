@@ -60,6 +60,12 @@ public class MainPanelController {
     private Button stopBtn;
 
     @FXML
+    private Button forwardBtn;
+
+    @FXML
+    private Button backwardBtn;
+
+    @FXML
     private Label timeLabel;
 
     @FXML
@@ -109,6 +115,8 @@ public class MainPanelController {
     private String voiceOnIcon;
     private String voiceOffIcon;
     private String backGround;
+    private String backwardIcon;
+    private String forwardIcon;
 
     private final double iconWidth = 40;
     private final double iconHeight = 40;
@@ -128,11 +136,15 @@ public class MainPanelController {
         voiceOffIcon = getClass().getResource("/icon/voice-off.png").toString();
         backGround = getClass().getResource("/icon/main.png").toString();
         fullScreenIcon = getClass().getResource("/icon/full-screen.png").toString();
+        backwardIcon = getClass().getResource("/icon/backward.png").toString();
+        forwardIcon = getClass().getResource("/icon/forward.png").toString();
 
         setIcon(playBtn,playIcon);
         setIcon(voiceBtn,voiceOnIcon);
         setIcon(fullBtn,fullScreenIcon);
         setIcon(stopBtn,endIcon);
+        setIcon(backwardBtn,backwardIcon);
+        setIcon(forwardBtn,forwardIcon);
 
         scene = mainPane.getScene();
         stage = (Stage) mainPane.getScene().getWindow();
@@ -197,6 +209,9 @@ public class MainPanelController {
                 } catch (MalformedURLException e) {
                     throw new RuntimeException(e);
                 }
+                if(mp != null){
+                    mp.stop();
+                }
                 mp = new MediaPlayer(media);
                 isPlaying = false;
                 setIcon(playBtn,playIcon);
@@ -254,16 +269,36 @@ public class MainPanelController {
     }
 
     @FXML
+    private void forward(){
+        if(mp != null){
+            double value = mp.getCurrentTime().toSeconds();
+            if(value + 5 <= mp.getStopTime().toSeconds()){
+                mp.seek(Duration.seconds(value+5));
+            }
+        }
+    }
+
+    @FXML
+    private void backward(){
+        if(mp != null){
+            double value = mp.getCurrentTime().toSeconds();
+            if(value - 5 >= mp.getStartTime().toSeconds()){
+                mp.seek(Duration.seconds(value-5));
+            }
+        }
+    }
+
+    @FXML
     private void initTime(){
         if(mp != null){
             timeSlider.valueProperty().addListener(new ChangeListener<Number>() {
                 @Override
                 public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                    double vlaue = t1.doubleValue();
-                    if(vlaue == mp.getCurrentTime().toSeconds()){
+                    double value = t1.doubleValue();
+                    if(value == mp.getCurrentTime().toSeconds()){
                         return;
                     }
-                    mp.seek(Duration.seconds(vlaue));
+                    mp.seek(Duration.seconds(value));
                 }
             });
         }

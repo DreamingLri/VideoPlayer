@@ -61,11 +61,13 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
+                        <Button fx:id="backwardBtn" onAction="#backward" styleClass="button" mnemonicParsing="false" HBox.hgrow="ALWAYS"/>
                         <Button fx:id="playBtn" mnemonicParsing="false" onAction="#play" styleClass="button" text="Play" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Button>
+                        <Button fx:id="forwardBtn" onAction="#forward" styleClass="button" mnemonicParsing="false" HBox.hgrow="ALWAYS"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
