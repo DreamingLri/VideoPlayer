@@ -257,12 +257,12 @@ public class MainPanelController {
             if(!isPlaying){
                 mp.play();
                 isPlaying = true;
-                playBtn.setText("Pause");
+//                playBtn.setText("Pause");
                 setIcon(playBtn,pauseIcon);
             } else {
                 mp.pause();
                 isPlaying = false;
-                playBtn.setText("Play");
+//                playBtn.setText("Play");
                 setIcon(playBtn,playIcon);
             }
         }
@@ -323,12 +323,12 @@ public class MainPanelController {
                 isMute = true;
                 setIcon(voiceBtn,voiceOffIcon);
                 mp.setMute(true);
-                voiceBtn.setText("voice-off");
+//                voiceBtn.setText("voice-off");
             } else {
                 isMute = false;
                 setIcon(voiceBtn,voiceOnIcon);
                 mp.setMute(false);
-                voiceBtn.setText("voice-on");
+//                voiceBtn.setText("voice-on");
             }
         }
     }

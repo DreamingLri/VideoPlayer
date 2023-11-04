@@ -11,9 +11,9 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" styleClass="mainPame" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.videoplayer.Controller.MainPanelController">
    <children>
-      <Pane fx:id="backGroundPane" layoutX="0.0" layoutY="0.0" onMouseClicked="#play" prefHeight="800.0" prefWidth="1000.0" styleClass="bg" />
+      <Pane fx:id="backGroundPane" onMouseClicked="#play" prefHeight="800.0" prefWidth="1000.0" styleClass="bg" />
       <ImageView fx:id="imageView" fitHeight="202.0" fitWidth="232.0" layoutX="184.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView" AnchorPane.bottomAnchor="99.0" AnchorPane.leftAnchor="184.0" AnchorPane.rightAnchor="184.0" AnchorPane.topAnchor="99.0" />
-      <MenuBar fx:id="menu" layoutY="0.0" prefHeight="30.0" prefWidth="1000.0" styleClass="menuBar">
+      <MenuBar fx:id="menu" prefHeight="30.0" prefWidth="1000.0" styleClass="menuBar">
         <menus>
           <Menu mnemonicParsing="false" styleClass="menu" text="Option">
             <items>
@@ -53,16 +53,16 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="stopBtn" alignment="CENTER_LEFT" mnemonicParsing="false" onMouseClicked="#closeVideo" styleClass="button" text="Stop" HBox.hgrow="ALWAYS">
+                        <Button fx:id="stopBtn" alignment="CENTER_LEFT" mnemonicParsing="false" onMouseClicked="#closeVideo" text="Stop" styleClass="button" HBox.hgrow="ALWAYS">
                            <HBox.margin>
-                              <Insets left="40.0" />
+                              <Insets left="20.0" />
                            </HBox.margin></Button>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Button fx:id="backwardBtn" onAction="#backward" styleClass="button" mnemonicParsing="false" HBox.hgrow="ALWAYS"/>
-                        <Button fx:id="playBtn" mnemonicParsing="false" onAction="#play" styleClass="button" text="Play" HBox.hgrow="ALWAYS">
+                        <Button fx:id="playBtn" mnemonicParsing="false" onAction="#play" styleClass="button" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -72,7 +72,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="voiceBtn" mnemonicParsing="false" onMouseClicked="#changeMute" styleClass="button" text="voice" />
+                        <Button fx:id="voiceBtn" mnemonicParsing="false" onMouseClicked="#changeMute" styleClass="button" />
                         <Slider fx:id="voiceSlider" onMousePressed="#initVoice" styleClass="slider" HBox.hgrow="ALWAYS">
                            <padding>
                               <Insets right="20.0" />
