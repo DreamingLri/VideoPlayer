@@ -351,14 +351,14 @@ public class MainPanelController {
         if(!isFullWindow){
             stage.setFullScreen(true);
             if(isButtonVisible){
-                hboxCenter.setVisible(false);
+//                hboxCenter.setVisible(false);
                 isButtonVisible = false;
             }
             isFullWindow = true;
         } else {
             stage.setFullScreen(false);
             if(!isButtonVisible){
-                hboxCenter.setVisible(true);
+//                hboxCenter.setVisible(true);
                 isButtonVisible = true;
             }
             isFullWindow = false;
